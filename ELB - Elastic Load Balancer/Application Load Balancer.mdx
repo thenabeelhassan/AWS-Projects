@@ -4,7 +4,7 @@
 2. Create a secuirty group ``ALB-Access`` and allow traffic from __AnyWhere__ on __HTTP__ and __HTTPs__.
 3. Create a security group ``Backend-Access``, allow from traffic from __ALB-Access__ security group on __custom port 7000__ and allow traffic from __MyIP-SG__ security group on __All Traffic__.
 4. Create 3 Instances with following User data:
-``bash
+```bash
 #!/bin/bash
 
 apt update
@@ -19,4 +19,4 @@ cd /code/testingapi
 npm i
 pm2 start index.js --name "Testing API"
 pm2 save
-``
+```
