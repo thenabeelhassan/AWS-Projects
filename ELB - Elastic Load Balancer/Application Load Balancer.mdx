@@ -23,3 +23,17 @@ npm i
 pm2 start index.js --name "Testing API"
 pm2 save
 ```
+5. Create a Target Group with following configurations and add the __Backend Server__ instances on port 7000 as targets.
+- Target Type: __Instances__
+- Target Group Name: __Backend-TG__
+- Protocol:Port: __HTTP 7000__
+- VPC: __DEV-VPC__
+- Healthy threshold: __2__
+- Unhealthy threshold: __5__
+6. Create a Application Load Balancer with following configurions:
+- Load balancer name: __Backend-ALB__
+- Scheme: __Internet-facing__
+- VPC: __DEV-VPC__
+- Subnets: Select ELB subnets in All AZs
+- Security groups: __ALB-Access__
+- Listeners and routing : In default action select __Backend-TG__ target group.
